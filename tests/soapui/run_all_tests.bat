@@ -21,3 +21,20 @@ cd %TEST_DIR%
 REM Create HTML out of soap-ui's junit results
 call junit-viewer --results=%SOAP_LOG_DIR_NAME% --save=%SOAP_LOG_DIR_NAME%results.html --minify=false  --contracted
 
+REM Find out if an error occurs
+set file=%SOAP_LOG_DIR_NAME%soapui-errors.log
+FOR /F "usebackq" %%A IN ('%file%') DO set size=%%~zA
+echo %size%
+set error_file="C:\Users\%USERNAME%\Desktop\ERROR_required-service-check.html"
+echo %error_file%
+
+REM if error is found copy HTML to Desktop
+if %size% LSS 1 (
+    REM all is fine
+) ELSE (
+	
+	IF NOT EXIST %error_file% (
+        echo dummy > %error_file%
+    )
+    xcopy "%SOAP_LOG_DIR_NAME%results.html" %error_file% /y /i
+)

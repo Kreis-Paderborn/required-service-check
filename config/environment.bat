@@ -6,7 +6,7 @@ SET ENV_LOGDATE=%xDATE:~6,4%-%xDATE:~3,2%-%xDATE:~0,2%
 SET ENV_LOGDATETIME=%xDATE:~6,4%-%xDATE:~3,2%-%xDATE:~0,2%_%xtime:~0,2%-%xtime:~3,2%
 
 REM Vorbelegung von Variablen mit dummy-Werten
-SET AGS_SERVER_TOKEN=[PATH-TO-WEBAPP-BUILDER-SERVER-APPS-WIDGETS-FOLDER]
+SET AGS_SERVER_TOKEN_SSL=[PATH-TO-WEBAPP-BUILDER-SERVER-APPS-WIDGETS-FOLDER]
 
 REM Überladen von Variablen durch spezifischen Festlegungen
 IF EXIST "%~dp0environment_custom.bat" CALL "%~dp0environment_custom.bat"
